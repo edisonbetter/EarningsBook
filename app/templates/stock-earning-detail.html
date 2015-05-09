@@ -1,0 +1,85 @@
+<ion-view view-title="{{stockEarning.name}} {{stockEarning.code}}">
+  <ion-content class="padding">
+    <div class="row">
+      <div class="col col-center">
+        <p>Earning</p>
+      </div>
+      <div class="col">
+        <h2 ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.profit}}</h2>
+      </div>
+      <div class="col col-center">
+        <p class="toRight" ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.percentage}}%</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item">
+        <div class="row">
+          <div class="col col-33">
+            <p>Date</p>
+          </div>
+          <div class="col">
+            {{stockEarning.date}}
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="row">
+          <div class="col col-33">
+            <p>Quantity</p>
+          </div>
+          <div class="col">
+            {{stockEarning.quantity}}
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="row">
+          <div class="col">
+            <p>Buy Price</p>
+          </div>
+          <div class="col">
+            {{stockEarning.buyPrice}}
+          </div>
+          <div class="col">
+            <p>Sell Price</p>
+          </div>
+          <div class="col">
+            {{stockEarning.sellPrice}}
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="row">
+          <div class="col">
+            <p>Buy Fee</p>
+          </div>
+          <div class="col">
+            {{stockEarning.buyTransactionFee}}
+          </div>
+          <div class="col">
+            <p>Sell Fee</p>
+          </div>
+          <div class="col">
+            {{stockEarning.sellTransactionFee}}
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="row">
+          <div class="col">
+            <p>Buy Consideration</p>
+          </div>
+          <div class="col">
+            {{stockEarning.buyConsideration}}
+          </div>
+          <div class="col">
+            <p>Sell Consideration</p>
+          </div>
+          <div class="col">
+            {{stockEarning.sellConsideration}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

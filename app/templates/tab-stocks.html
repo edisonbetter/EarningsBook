@@ -1,0 +1,23 @@
+<ion-view view-title="Stock Earnings">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="stockEarning in stockEarnings" href="#/tab/stocks/{{stockEarning.id}}">
+        <div class="row">
+          <div class="col">
+            <h3 class="strong">{{stockEarning.name}}</h3>
+            <!-- <p>{{earning.code}}</p> -->
+          </div>
+          <div class="col ">
+            <p>{{stockEarning.date}}</p>
+          </div>
+          <div class="col text-right">
+            <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.profit}}</h3>
+          </div>
+          <div class="col text-right">
+            <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.percentage}}%</h3>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

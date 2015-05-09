@@ -1,3 +1,4 @@
+'use strict';
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -31,9 +32,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // setup an abstract state for the tabs directive
     .state('tab', {
-    url: "/tab",
+    url: '/tab',
     abstract: true,
-    templateUrl: "templates/tabs.html"
+    templateUrl: 'templates/tabs.html'
   })
 
   // Each tab has its own nav history stack:
@@ -48,25 +49,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.stock', {
+      url: '/stocks',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-stocks': {
+          templateUrl: 'templates/tab-stocks.html',
+          controller: 'StockEarningsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.stock-detail', {
+      url: '/stocks/:stockEarningId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-stocks': {
+          templateUrl: 'templates/stock-earning-detail.html',
+          controller: 'StockEarningDetailCtrl'
         }
       }
     })
-
+    .state('tab.stock-create', {
+      url: '/new-stock-earning',
+      views: {
+        'tab-dash': {
+          templateUrl: 'templates/stock-earning-create.html',
+          controller: 'StockEarningCreateCtrl'
+        }
+      }
+    })
   .state('tab.account', {
     url: '/account',
     views: {

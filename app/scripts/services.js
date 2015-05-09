@@ -1,6 +1,34 @@
-angular.module('starter.services', [])
+'use strict';
 
-.factory('Chats', function() {
+var starter = angular.module('starter.services', [])
+.factory('StockEarnings', function(){
+  var stockEarnings = [{ id:1, date: '2013-11-20', code:'1219', name:'天喔国际', quantity:5000, profit:1128.86, currency:'HKD', percentage:21.87, buyPrice:10, sellPrice:11, buyTransactionFee:40, sellTransactionFee:50.2, buyConsideration:50000, sellConsideration:60000},
+  { id:2, date: '2013-11-27', code:'1316', name:'耐世特', quantity:5000, profit:1192.99, currency:'HKD', percentage:11.87, buyPrice:30, sellPrice:21,buyTransactionFee:40, sellTransactionFee:50.2, buyConsideration:50000, sellConsideration:60000},
+  { id:3, date: '2013-12-02', code:'1515', name:'凤凰医疗', quantity:5000, profit:934.43, currency:'HKD', percentage:31.87, buyPrice:40, sellPrice:31, buyTransactionFee:40, sellTransactionFee:50.2, buyConsideration:50000, sellConsideration:60000},
+  { id:4, date: '2013-12-04', code:'3315', name:'金邦达宝嘉', quantity:5000, profit:1405.11, currency:'HKD', percentage:6.87, buyPrice:50, sellPrice:41, buyTransactionFee:40, sellTransactionFee:50.2, buyConsideration:50000, sellConsideration:60000},
+  { id:5, date: '2013-12-05', code:'484', name:'云游控股', quantity:5000, profit:254.16, currency:'HKD', percentage:-9.87, buyPrice:60, sellPrice:51, buyTransactionFee:40, sellTransactionFee:50.2, buyConsideration:50000, sellConsideration:60000},
+  { id:6, date: '2013-12-11', code:'1862', name:'景瑞控股', quantity:5000, profit:-503.17, currency:'HKD', percentage:-10.7, buyPrice:80, sellPrice:61, buyTransactionFee:40, sellTransactionFee:50.2, buyConsideration:50000, sellConsideration:60000},
+  { id:7, date: '2013-12-12', code:'1359', name:'中国信达资产管理', quantity:5000, profit:885.54, currency:'HKD', percentage:2.87, buyPrice:60, sellPrice:71, buyTransactionFee:40, sellTransactionFee:50.2, buyConsideration:50000, sellConsideration:60000}];
+
+  return {
+    all: function() {
+      return stockEarnings;
+    },
+    remove: function(stockEarning) {
+      stockEarnings.splice(stockEarnings.indexOf(stockEarning), 1);
+    },
+    get: function(stockEarningId) {
+      for (var i = 0; i < stockEarnings.length; i++) {
+        if (stockEarnings[i].id === parseInt(stockEarningId)) {
+          return stockEarnings[i];
+        }
+      }
+      return null;
+    }
+  };
+});
+
+starter.factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data

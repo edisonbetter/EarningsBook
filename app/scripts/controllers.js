@@ -1,12 +1,17 @@
+'use strict';
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope, $state) {
+  $scope.create = function(){
+    $state.go('tab.stock-create');
+  };
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
-  }
+  };
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
@@ -17,4 +22,19 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
-});
+})
+
+.controller('StockEarningsCtrl', function($scope, StockEarnings){
+  $scope.stockEarnings = StockEarnings.all();
+})
+
+.controller('StockEarningDetailCtrl', function($scope, $stateParams, StockEarnings){
+  $scope.stockEarning = StockEarnings.get($stateParams.stockEarningId);
+})
+
+.controller('StockEarningCreateCtrl', function($scope, StockEarnings){
+  $scope.create = function(){
+    $scope.stockEarning = StockEarnings.create();
+  };
+})
+;
