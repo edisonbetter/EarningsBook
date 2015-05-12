@@ -1,29 +1,26 @@
 <ion-view view-title="Earnings Book">
-  <ion-nav-buttons side="secondary">
-    <button class="button" ng-click="create()">Add</button>
-  </ion-nav-buttons>
   <ion-content class="padding">
     <div class="list card">
       <div class="item item-divider">
         <span>CNY Total Profits</span>
-        <span class="profit-positive toRight">1302</span>
+        <span class="toRight" ng-class="{true:'profit-positive', false:'profit-negative'}[allEarnings.cnyEarnings>=0]">{{allEarnings.cnyEarnings}}</span>
       </div>
       <div class="item item-body">
         <div>
-          <div>Stock Profit</div>
-          <div>Fund Profit</div>
+          <div>Stock Profit <span ng-class="{true:'profit-positive', false:'profit-negative'}[allEarnings.cnyStockEarnings>=0]">{{allEarnings.cnyStockEarnings}}</span></div>
+          <div>Fund Profit <span ng-class="{true:'profit-positive', false:'profit-negative'}[allEarnings.cnyFundEarnings>=0]">{{allEarnings.cnyFundEarnings}}</span></div>
         </div>
       </div>
     </div>
     <div class="list card">
       <div class="item item-divider">
         <span>HKD Total Profits</span>
-        <span class="profit-positive toRight">5990</span>
+        <span class="toRight" ng-class="{true:'profit-positive', false:'profit-negative'}[allEarnings.hkdEarnings>=0]">{{allEarnings.hkdEarnings}}</span>
       </div>
       <div class="item item-body">
         <div>
-          <div>Stock Profit</div>
-          <div>Fund Profit</div>
+          <div>Stock Profit <span ng-class="{true:'profit-positive', false:'profit-negative'}[allEarnings.hkdStockEarnings>=0]">{{allEarnings.hkdStockEarnings}}</span></div>
+          <div>Fund Profit <span ng-class="{true:'profit-positive', false:'profit-negative'}[allEarnings.hkdFundEarnings>=0]">{{allEarnings.hkdFundEarnings}}</span></div>
         </div>
       </div>
     </div>

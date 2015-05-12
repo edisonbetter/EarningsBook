@@ -1,14 +1,16 @@
 <ion-view view-title="{{stockEarning.name}} {{stockEarning.code}}">
   <ion-content class="padding">
     <div class="row">
-      <div class="col col-center">
+      <!-- <div class="col col-10 col-center">
         <p>Earning</p>
+      </div> -->
+      <div class="col col-75 col-center">
+        <p>Earning</p>
+        <h4 ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.profit}} {{stockEarning.currency}}</h4>
       </div>
-      <div class="col">
-        <h2 ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.profit}}</h2>
-      </div>
-      <div class="col col-center">
-        <p class="toRight" ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.percentage}}%</p>
+      <div class="col col-25 col-center">
+        <p>Earning Rate</p>
+        <h4 ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.earningRate}}%</h4>
       </div>
     </div>
     <div class="card">

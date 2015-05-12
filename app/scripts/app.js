@@ -70,9 +70,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     .state('tab.stock-create', {
       url: '/new-stock-earning',
       views: {
-        'tab-dash': {
+        'tab-stocks': {
           templateUrl: 'templates/stock-earning-create.html',
-          controller: 'StockEarningCreateCtrl'
+          controller: 'StockEarningsCtrl'
         }
       }
     })

@@ -1,12 +1,40 @@
 <ion-view view-title="Stock Earnings">
   <ion-content>
-    <div class="list">
-      <div class="item item-input">
-        <span class="input-label">
-          Hello
-        </span>
-        <input type="text">
-      </div>
+    <div class="card">
+      <label class="item item-input">
+        <input type="text" placeholder="Stock Code" ng-model="stockEarning.code" required>
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Stock Name" ng-model="stockEarning.name" required>
+      </label>
+      <label class="item item-input">
+        <input type="date" placeholder="Date" ng-model="stockEarning.date" required>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">Currency</div>
+        <select ng-model="stockEarning.currency" ng-model="stockEarning.code" required>
+          <option value="HKD" selected>HKD</option>
+          <option value="CNY">CNY</option>
+        </select>
+      </label>
+      <label class="item item-input">
+        <input type="number" placeholder="Quantity" ng-model="stockEarning.quantity" required>
+      </label>
+      <label class="item item-input">
+        <input type="number" placeholder="Buy Price" ng-model="stockEarning.buyPrice" required>
+      </label>
+      <label class="item item-input">
+        <input type="number" placeholder="Buy Fee" ng-model="stockEarning.buyTransactionFee" required>
+      </label>
+      <label class="item item-input">
+        <input type="number" placeholder="Sell Price" ng-model="stockEarning.sellPrice" required>
+      </label>
+      <label class="item item-input">
+        <input type="number" placeholder="Sell Fee" ng-model="stockEarning.sellTransactionFee" required>
+      </label>
+    </div>
+    <div class="padding">
+      <button class="button button-balanced button-block" ng-click="create(stockEarning)">Save</button>
     </div>
   </ion-content>
 </ion-view>

@@ -1,10 +1,8 @@
 'use strict';
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $state) {
-  $scope.create = function(){
-    $state.go('tab.stock-create');
-  };
+.controller('DashCtrl', function($scope, AllEarnings) {
+  $scope.allEarnings = AllEarnings.all();
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
@@ -24,17 +22,36 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('StockEarningsCtrl', function($scope, StockEarnings){
-  $scope.stockEarnings = StockEarnings.all();
+.controller('StockEarningsCtrl', function($scope, $ionicHistory, $state, StockEarnings){
+  $scope.stockEarnings = [];
+
+  $scope.all = function(){
+    $scope.stockEarnings = StockEarnings.all();
+  };
+  $scope.all();
+
+  $scope.createAction = function(){
+    $state.go('tab.stock-create');
+  };
+  $scope.create = function(stockEarning){
+    StockEarnings.create(stockEarning, function(){
+      $scope.clear();
+      //$state.go('tab.stock');
+    });
+    $ionicHistory.currentView($ionicHistory.backView());
+    $state.go('tab.stock-detail', {'stockEarningId':stockEarning.id});
+  };
+
+  $scope.clear = function () {
+    $scope.stockEarning = null;
+  };
 })
 
 .controller('StockEarningDetailCtrl', function($scope, $stateParams, StockEarnings){
   $scope.stockEarning = StockEarnings.get($stateParams.stockEarningId);
 })
 
-.controller('StockEarningCreateCtrl', function($scope, StockEarnings){
-  $scope.create = function(){
-    $scope.stockEarning = StockEarnings.create();
-  };
-})
+// .controller('StockEarningCreateCtrl', function($scope, StockEarnings){
+//
+// })
 ;

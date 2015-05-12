@@ -1,4 +1,7 @@
 <ion-view view-title="Stock Earnings">
+  <ion-nav-buttons side="secondary">
+    <button class="button ion-plus-round" ng-click="createAction()"></button>
+  </ion-nav-buttons>
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="stockEarning in stockEarnings" href="#/tab/stocks/{{stockEarning.id}}">
@@ -14,7 +17,7 @@
             <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.profit}}</h3>
           </div>
           <div class="col text-right">
-            <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.percentage}}%</h3>
+            <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.earningRate}}%</h3>
           </div>
         </div>
       </ion-item>
