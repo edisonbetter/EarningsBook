@@ -6,7 +6,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'angularCharts'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -68,7 +68,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
     .state('tab.stock-create', {
-      url: '/new-stock-earning',
+      url: '/stocks/new',
+      views: {
+        'tab-stocks': {
+          templateUrl: 'templates/stock-earning-create.html',
+          controller: 'StockEarningsCtrl'
+        }
+      }
+    })
+    .state('tab.stock-edit', {
+      url: '/stocks/edit/:stockEarningId',
       views: {
         'tab-stocks': {
           templateUrl: 'templates/stock-earning-create.html',

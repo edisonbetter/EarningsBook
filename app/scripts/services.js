@@ -57,7 +57,7 @@ var starter = angular.module('starter.services', [])
 });
 
 starter.factory('AllEarnings', function(){
-  var allEarnings = {hkdEarnings:20030, hkdStockEarnings:20030, hkdFundEarnings:0, cnyEarnings:30202, cnyStockEarnings:0, cnyFundEarnings:30202};
+  var allEarnings = {hkdEarnings:20030, hkdStockEarnings:14030, hkdFundEarnings:6000, cnyEarnings:30202, cnyStockEarnings:3502, cnyFundEarnings:26700};
   return {
     all: function(){
       return allEarnings;
