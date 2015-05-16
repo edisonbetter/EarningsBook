@@ -40,60 +40,99 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   // Each tab has its own nav history stack:
 
   .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('tab.stock', {
-      url: '/stocks',
+      url: '/dash',
       views: {
-        'tab-stocks': {
-          templateUrl: 'templates/tab-stocks.html',
-          controller: 'StockEarningsCtrl'
+        'tab-dash': {
+          templateUrl: 'templates/tab-dash.html',
+          controller: 'DashCtrl'
         }
       }
     })
-    .state('tab.stock-detail', {
-      url: '/stocks/:stockEarningId',
+    // Stock Profits start
+    .state('tab.stockProfits', {
+      url: '/stockProfits',
       views: {
-        'tab-stocks': {
-          templateUrl: 'templates/stock-earning-detail.html',
-          controller: 'StockEarningDetailCtrl'
+        'tab-stockProfits': {
+          templateUrl: 'templates/tab-stock-profits.html',
+          controller: 'StockProfitsCtrl'
         }
       }
     })
-    .state('tab.stock-create', {
-      url: '/stocks/new',
+    .state('tab.stockProfitDetail', {
+      url: '/stockProfits/:stockProfitId',
       views: {
-        'tab-stocks': {
-          templateUrl: 'templates/stock-earning-create.html',
-          controller: 'StockEarningsCtrl'
+        'tab-stockProfits': {
+          templateUrl: 'templates/stock-profit-detail.html',
+          controller: 'StockProfitDetailCtrl'
         }
       }
     })
-    .state('tab.stock-edit', {
-      url: '/stocks/edit/:stockEarningId',
+    .state('tab.stockProfitCreate', {
+      url: '/stockProfits/new',
       views: {
-        'tab-stocks': {
-          templateUrl: 'templates/stock-earning-create.html',
-          controller: 'StockEarningsCtrl'
+        'tab-stockProfits': {
+          templateUrl: 'templates/stock-profit-create.html',
+          controller: 'StockProfitsCtrl'
         }
       }
     })
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+    .state('tab.stockProfitEdit', {
+      url: '/stockProfits/edit/:stockEarningId',
+      views: {
+        'tab-stockProfits': {
+          templateUrl: 'templates/stock-profit-create.html',
+          controller: 'StockProfitsCtrl'
+        }
       }
-    }
-  });
+    })
+    // Stock Profits end
+    // Fund Profits start
+    .state('tab.fundProfits', {
+      url: '/fundProfits',
+      views: {
+        'tab-fundProfits': {
+          templateUrl: 'templates/tab-fund-profits.html',
+          controller: 'FundProfitsCtrl'
+        }
+      }
+    })
+    .state('tab.fundProfitDetail', {
+      url: '/fundProfits/:fundProfitId',
+      views: {
+        'tab-fundProfits': {
+          templateUrl: 'templates/fund-profit-detail.html',
+          controller: 'FundProfitDetailCtrl'
+        }
+      }
+    })
+    .state('tab.fundProfitCreate', {
+      url: '/fundProfits/new',
+      views: {
+        'tab-fundProfits': {
+          templateUrl: 'templates/fund-profit-create.html',
+          controller: 'FundProfitsCtrl'
+        }
+      }
+    })
+    .state('tab.fundProfitEdit', {
+      url: '/fundProfits/edit/:fundEarningId',
+      views: {
+        'tab-fundProfits': {
+          templateUrl: 'templates/fund-profit-create.html',
+          controller: 'FundProfitsCtrl'
+        }
+      }
+    })
+    // Fund Profits end
+    .state('tab.account', {
+      url: '/account',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/tab-account.html',
+          controller: 'AccountCtrl'
+        }
+      }
+    });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

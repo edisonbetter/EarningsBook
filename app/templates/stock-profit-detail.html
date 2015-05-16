@@ -1,0 +1,95 @@
+<ion-view view-title="{{stockProfit.name}} {{stockProfit.code}}">
+  <ion-content class="padding">
+    <div class="row">
+      <!-- <div class="col col-10 col-center">
+        <p>Earning</p>
+      </div> -->
+      <div class="col col-67 col-center">
+        <p>Profit</p>
+        <h4 ng-class="{true:'profit-positive', false:'profit-negative'}[stockProfit.amount>=0]">{{stockProfit.amount}} {{stockProfit.currency}}</h4>
+      </div>
+      <div class="col col-33 col-center">
+        <p>Profitability</p>
+        <h4 ng-class="{true:'profit-positive', false:'profit-negative'}[stockProfit.amount>=0]">{{stockProfit.profitability}}%</h4>
+      </div>
+    </div>
+    <div class="list">
+      <div class="item">
+        <div class="row">
+          <div class="col col-33">
+            <p>Date</p>
+          </div>
+          <div class="col">
+            {{stockProfit.date}}
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="row">
+          <div class="col col-33">
+            <p>Quantity</p>
+          </div>
+          <div class="col">
+            {{stockProfit.quantity}}
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="row">
+          <div class="col">
+            <p>Buy Price</p>
+          </div>
+          <div class="col">
+            {{stockProfit.buyPrice}}
+          </div>
+          <div class="col">
+            <p>Sell Price</p>
+          </div>
+          <div class="col">
+            {{stockProfit.sellPrice}}
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="row">
+          <div class="col">
+            <p>Buy Fee</p>
+          </div>
+          <div class="col">
+            {{stockProfit.buyTransactionFee}}
+          </div>
+          <div class="col">
+            <p>Sell Fee</p>
+          </div>
+          <div class="col">
+            {{stockProfit.sellTransactionFee}}
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="row">
+          <div class="col">
+            <p>Buy Consideration</p>
+          </div>
+          <div class="col">
+            {{stockProfit.buyConsideration}}
+          </div>
+          <div class="col">
+            <p>Sell Consideration</p>
+          </div>
+          <div class="col">
+            {{stockProfit.sellConsideration}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-center">
+        <button class="button button-assertive button-outline button-block ion-trash-a" ng-click="confirmDelete(stockProfit)">Delete </button>
+      </div>
+      <div class="col col-center">
+        <button class="button button-positive button-outline button-block ion-edit" ng-click="edit(stockProfit)">Edit</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,9 +1,9 @@
 'use strict';
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $ionicHistory, AllEarnings) {
+.controller('DashCtrl', function($scope, $ionicHistory, ProfitSummary) {
   $ionicHistory.clearHistory();
-  $scope.allEarnings = AllEarnings.all();
+  $scope.profitSummary = ProfitSummary.all();
   $scope.config = {
     title: '',
     tooltips: true,
@@ -24,29 +24,29 @@ angular.module('starter.controllers', [])
     series: ['Earnings'],
     data: [{
       x: 'Stock',
-      y: [$scope.allEarnings.cnyStockEarnings],
-      tooltip: 'Stock Earnings'
+      y: [$scope.profitSummary.cnyStockProfits],
+      tooltip: 'Stock Profits'
     },
     {
       x: 'Fund',
-      y: [$scope.allEarnings.cnyFundEarnings],
-      tooltip: 'Fund Earnings'
+      y: [$scope.profitSummary.cnyFundProfits],
+      tooltip: 'Fund Profits'
     }]
   };
   $scope.hkdData = {
     series: ['Earnings'],
     data: [{
       x: 'Stock',
-      y: [$scope.allEarnings.hkdStockEarnings],
+      y: [$scope.profitSummary.hkdStockProfits],
       tooltip: 'Stock Earnings'
     },
     {
       x: 'Fund',
-      y: [$scope.allEarnings.hkdFundEarnings],
+      y: [$scope.profitSummary.hkdFundProfits],
       tooltip: 'Fund Earnings'
     }]
   };
-  $scope.allEarnings = AllEarnings.all();
+  // $scope.profitSummary = ProfitSummary.all();
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
@@ -66,35 +66,35 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('StockEarningsCtrl', function($scope, $ionicHistory, $state, $stateParams, StockEarnings) {
-  $scope.stockEarnings = [];
-  $scope.stockEarning = StockEarnings.get($stateParams.stockEarningId);
+.controller('StockProfitsCtrl', function($scope, $ionicHistory, $state, $stateParams, StockProfits) {
+  $scope.stockProfits = [];
+  $scope.stockProfit = StockProfits.get($stateParams.stockEarningId);
 
   $scope.all = function() {
-    $scope.stockEarnings = StockEarnings.all();
+    $scope.stockProfits = StockProfits.all();
   };
   $scope.all();
 
   $scope.createAction = function() {
-    $state.go('tab.stock-create');
+    $state.go('tab.stockProfitCreate');
   };
-  $scope.create = function(stockEarning) {
-    StockEarnings.create(stockEarning, function() {
+  $scope.create = function(stockProfit) {
+    StockProfits.create(stockProfit, function() {
       $scope.clear();
     });
     $ionicHistory.currentView($ionicHistory.backView());
-    $state.go('tab.stock-detail', {
-      'stockEarningId': stockEarning.id
+    $state.go('tab.stockProfitDetail', {
+      'stockProfitId': stockProfit.id
     });
   };
 
   $scope.clear = function() {
-    $scope.stockEarning = null;
+    $scope.stockProfit = null;
   };
 })
 
-.controller('StockEarningDetailCtrl', function($scope, $state, $stateParams, $ionicPopup, StockEarnings) {
-  $scope.stockEarning = StockEarnings.get($stateParams.stockEarningId);
+.controller('StockProfitDetailCtrl', function($scope, $state, $stateParams, $ionicPopup, StockProfits) {
+  $scope.stockProfit = StockProfits.get($stateParams.stockProfitId);
   $scope.confirmDelete = function(){
     var confirmPopup = $ionicPopup.confirm({
     title: 'Confirm Delete',
@@ -102,19 +102,62 @@ angular.module('starter.controllers', [])
     });
     confirmPopup.then(function(res){
       if(res){
-        StockEarnings.remove($scope.stockEarning);
-        $state.go('tab.stock');
+        StockProfits.remove($scope.stockProfit);
+        $state.go('tab.stockProfits');
       }
     });
   };
-  $scope.edit = function(stockEarning){
-    $state.go('tab.stock-edit', {
-      'stockEarningId': stockEarning.id
+  $scope.edit = function(stockProfit){
+    $state.go('tab.stockProfitEdit', {
+      'stockProfitId': stockProfit.id
     });
   };
 })
+.controller('FundProfitsCtrl', function($scope, $ionicHistory, $state, $stateParams, FundProfits) {
+  $scope.fundProfits = [];
+  $scope.fundProfit = FundProfits.get($stateParams.fundEarningId);
 
-// .controller('StockEarningCreateCtrl', function($scope, StockEarnings){
-//
-// })
+  $scope.all = function() {
+    $scope.fundProfits = FundProfits.all();
+  };
+  $scope.all();
+
+  $scope.createAction = function() {
+    $state.go('tab.fundProfitCreate');
+  };
+  $scope.create = function(fundProfit) {
+    FundProfits.create(fundProfit, function() {
+      $scope.clear();
+    });
+    $ionicHistory.currentView($ionicHistory.backView());
+    $state.go('tab.fundProfitDetail', {
+      'fundProfitId': fundProfit.id
+    });
+  };
+
+  $scope.clear = function() {
+    $scope.fundProfit = null;
+  };
+})
+
+.controller('FundProfitDetailCtrl', function($scope, $state, $stateParams, $ionicPopup, FundProfits) {
+  $scope.fundProfit = FundProfits.get($stateParams.fundProfitId);
+  $scope.confirmDelete = function(){
+    var confirmPopup = $ionicPopup.confirm({
+    title: 'Confirm Delete',
+    template: 'Are you sure you want to delete it?'
+    });
+    confirmPopup.then(function(res){
+      if(res){
+        FundProfits.remove($scope.fundProfit);
+        $state.go('tab.fundProfits');
+      }
+    });
+  };
+  $scope.edit = function(fundProfit){
+    $state.go('tab.fundProfitEdit', {
+      'fundProfitId': fundProfit.id
+    });
+  };
+})
 ;

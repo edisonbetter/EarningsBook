@@ -1,0 +1,47 @@
+<ion-view view-title="Stock Profit">
+  <ion-content>
+    <div class="card">
+      <form name="createForm" role="form" novalidate show-validation>
+        <label class="item item-input">
+          <input type="text" placeholder="Stock Code" ng-model="stockProfit.code" required>
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Stock Name" ng-model="stockProfit.name" required>
+        </label>
+        <label class="item item-input">
+          <input type="date" placeholder="Date" ng-model="stockProfit.date" required>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">Currency</div>
+          <select ng-model="stockProfit.currency" ng-model="stockProfit.code" required>
+            <option value="HKD" selected>HKD</option>
+            <option value="CNY">CNY</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <input name="buyPrice" type="number" placeholder="Quantity" ng-model="stockProfit.quantity" required>
+        </label>
+        <div ng-show="createForm.buyPrice.$invalid">
+          <p class="help-block" ng-show="createForm.buyPrice.$error.number">
+            This field should be a number.
+          </p>
+        </div>
+        <label class="item item-input">
+          <input type="number" placeholder="Buy Price" ng-model="stockProfit.buyPrice" required>
+        </label>
+        <label class="item item-input">
+          <input type="number" placeholder="Buy Fee" ng-model="stockProfit.buyTransactionFee" required>
+        </label>
+        <label class="item item-input">
+          <input type="number" placeholder="Sell Price" ng-model="stockProfit.sellPrice" required>
+        </label>
+        <label class="item item-input">
+          <input type="number" placeholder="Sell Fee" ng-model="stockProfit.sellTransactionFee" required>
+        </label>
+      </form>
+    </div>
+    <div class="padding">
+      <button class="button button-balanced button-block" ng-click="create(stockProfit)">Save</button>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,27 @@
+<ion-view view-title="Fund Profits">
+  <ion-nav-buttons side="secondary">
+    <a class="button button-icon icon ion-plus-round bar-button-style-1" ng-click="createAction()"></a>
+    <!-- <button class="button ion-plus-round" ng-click="createAction()"></button> -->
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="fundProfit in fundProfits" href="#/tab/fundProfits/{{fundProfit.id}}">
+        <div class="row">
+          <div class="col">
+            <h3 class="strong">{{fundProfit.name}}</h3>
+            <!-- <p>{{earning.code}}</p> -->
+          </div>
+          <div class="col ">
+            <p>{{fundProfit.date}}</p>
+          </div>
+          <div class="col text-right">
+            <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[fundProfit.amount>=0]">{{fundProfit.amount}}</h3>
+          </div>
+          <div class="col text-right">
+            <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[fundProfit.amount>=0]">{{fundProfit.profitability}}%</h3>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

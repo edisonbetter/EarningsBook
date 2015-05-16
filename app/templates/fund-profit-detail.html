@@ -1,16 +1,16 @@
-<ion-view view-title="{{stockEarning.name}} {{stockEarning.code}}">
+<ion-view view-title="{{fundProfit.name}} {{fundProfit.code}}">
   <ion-content class="padding">
     <div class="row">
       <!-- <div class="col col-10 col-center">
         <p>Earning</p>
       </div> -->
       <div class="col col-67 col-center">
-        <p>Earning</p>
-        <h4 ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.profit}} {{stockEarning.currency}}</h4>
+        <p>Profit</p>
+        <h4 ng-class="{true:'profit-positive', false:'profit-negative'}[fundProfit.amount>=0]">{{fundProfit.amount}} {{fundProfit.currency}}</h4>
       </div>
       <div class="col col-33 col-center">
-        <p>Earning Rate</p>
-        <h4 ng-class="{true:'profit-positive', false:'profit-negative'}[stockEarning.profit>=0]">{{stockEarning.earningRate}}%</h4>
+        <p>Profitability</p>
+        <h4 ng-class="{true:'profit-positive', false:'profit-negative'}[fundProfit.amount>=0]">{{fundProfit.profitability}}%</h4>
       </div>
     </div>
     <div class="list">
@@ -20,7 +20,7 @@
             <p>Date</p>
           </div>
           <div class="col">
-            {{stockEarning.date}}
+            {{fundProfit.date}}
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
             <p>Quantity</p>
           </div>
           <div class="col">
-            {{stockEarning.quantity}}
+            {{fundProfit.quantity}}
           </div>
         </div>
       </div>
@@ -40,13 +40,13 @@
             <p>Buy Price</p>
           </div>
           <div class="col">
-            {{stockEarning.buyPrice}}
+            {{fundProfit.buyPrice}}
           </div>
           <div class="col">
             <p>Sell Price</p>
           </div>
           <div class="col">
-            {{stockEarning.sellPrice}}
+            {{fundProfit.sellPrice}}
           </div>
         </div>
       </div>
@@ -56,13 +56,13 @@
             <p>Buy Fee</p>
           </div>
           <div class="col">
-            {{stockEarning.buyTransactionFee}}
+            {{fundProfit.buyTransactionFee}}
           </div>
           <div class="col">
             <p>Sell Fee</p>
           </div>
           <div class="col">
-            {{stockEarning.sellTransactionFee}}
+            {{fundProfit.sellTransactionFee}}
           </div>
         </div>
       </div>
@@ -72,23 +72,23 @@
             <p>Buy Consideration</p>
           </div>
           <div class="col">
-            {{stockEarning.buyConsideration}}
+            {{fundProfit.buyConsideration}}
           </div>
           <div class="col">
             <p>Sell Consideration</p>
           </div>
           <div class="col">
-            {{stockEarning.sellConsideration}}
+            {{fundProfit.sellConsideration}}
           </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col col-center">
-        <button class="button button-assertive button-outline button-block ion-trash-a" ng-click="confirmDelete(stockEarning)">Delete </button>
+        <button class="button button-assertive button-outline button-block ion-trash-a" ng-click="confirmDelete(fundProfit)">Delete </button>
       </div>
       <div class="col col-center">
-        <button class="button button-positive button-outline button-block ion-edit" ng-click="edit(stockEarning)">Edit</button>
+        <button class="button button-positive button-outline button-block ion-edit" ng-click="edit(fundProfit)">Edit</button>
       </div>
     </div>
   </ion-content>
