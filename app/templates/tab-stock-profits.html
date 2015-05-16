@@ -4,15 +4,37 @@
     <!-- <button class="button ion-plus-round" ng-click="createAction()"></button> -->
   </ion-nav-buttons>
   <ion-content>
-    <ion-list>
+    <div class="item item-divider table-header">
+      <div class="row">
+        <div class="col">Stock</div>
+        <div class="col text-center">Date</div>
+        <div class="col text-center">Profit</div>
+      </div>
+    </div>
+    <div class="list">
+      <a class="row item" collection-repeat="stockProfit in stockProfits" href="#/tab/stockProfits/{{stockProfit.id}}">
+          <div class="col">
+            <h3>{{stockProfit.name}}</h3> 
+            <span class="secondary-font">{{stockProfit.code}}</span>
+          </div>
+          <div class="col text-center">
+            <h3>{{stockProfit.date | date: 'yyyy-MM-dd'}}</h3>
+          </div>
+          <div class="col text-center">
+            <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[stockProfit.amount>=0]">{{stockProfit.amount}}</h3>
+            <span class="secondary-font" ng-class="{true:'profit-positive', false:'profit-negative'}[stockProfit.amount>=0]">{{stockProfit.profitability}}%</span>
+          </div>
+      </a>
+    </div>
+    <!-- <ion-list show-reorder="true">
       <ion-item ng-repeat="stockProfit in stockProfits" href="#/tab/stockProfits/{{stockProfit.id}}">
         <div class="row">
           <div class="col">
             <h3 class="strong">{{stockProfit.name}}</h3>
-            <!-- <p>{{earning.code}}</p> -->
+            <p>{{earning.code}}</p>
           </div>
           <div class="col ">
-            <p>{{stockProfit.date}}</p>
+            <p>{{stockProfit.date | date: 'MM-dd'}}</p>
           </div>
           <div class="col text-right">
             <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[stockProfit.amount>=0]">{{stockProfit.amount}}</h3>
@@ -21,7 +43,7 @@
             <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[stockProfit.amount>=0]">{{stockProfit.profitability}}%</h3>
           </div>
         </div>
-      </ion-item>
+      </ion-item> -->
     </ion-list>
   </ion-content>
 </ion-view>

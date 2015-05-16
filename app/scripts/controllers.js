@@ -46,18 +46,6 @@ angular.module('starter.controllers', [])
       tooltip: 'Fund Earnings'
     }]
   };
-  // $scope.profitSummary = ProfitSummary.all();
-})
-
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
 })
 
 .controller('AccountCtrl', function($scope) {
@@ -66,9 +54,9 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('StockProfitsCtrl', function($scope, $ionicHistory, $state, $stateParams, StockProfits) {
+.controller('StockProfitsCtrl', function($scope, $ionicHistory, $state, $stateParams, StockProfits, ProfitSummary) {
   $scope.stockProfits = [];
-  $scope.stockProfit = StockProfits.get($stateParams.stockEarningId);
+  $scope.stockProfit = StockProfits.get($stateParams.stockProfitId);
 
   $scope.all = function() {
     $scope.stockProfits = StockProfits.all();
@@ -79,13 +67,14 @@ angular.module('starter.controllers', [])
     $state.go('tab.stockProfitCreate');
   };
   $scope.create = function(stockProfit) {
-    StockProfits.create(stockProfit, function() {
-      $scope.clear();
-    });
+    stockProfit.securityType = 'Stock';
+    StockProfits.create(stockProfit);
+    ProfitSummary.update(stockProfit);
     $ionicHistory.currentView($ionicHistory.backView());
     $state.go('tab.stockProfitDetail', {
       'stockProfitId': stockProfit.id
     });
+    $scope.clear();
   };
 
   $scope.clear = function() {
@@ -115,7 +104,7 @@ angular.module('starter.controllers', [])
 })
 .controller('FundProfitsCtrl', function($scope, $ionicHistory, $state, $stateParams, FundProfits) {
   $scope.fundProfits = [];
-  $scope.fundProfit = FundProfits.get($stateParams.fundEarningId);
+  $scope.fundProfit = FundProfits.get($stateParams.fundProfitId);
 
   $scope.all = function() {
     $scope.fundProfits = FundProfits.all();
@@ -126,6 +115,7 @@ angular.module('starter.controllers', [])
     $state.go('tab.fundProfitCreate');
   };
   $scope.create = function(fundProfit) {
+    fundProfit.securityType = 'Fund';
     FundProfits.create(fundProfit, function() {
       $scope.clear();
     });

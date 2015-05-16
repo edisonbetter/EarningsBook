@@ -4,21 +4,27 @@
     <!-- <button class="button ion-plus-round" ng-click="createAction()"></button> -->
   </ion-nav-buttons>
   <ion-content>
+    <div class="item item-divider table-header">
+      <div class="row">
+        <div class="col">Fund</div>
+        <div class="col text-center">Date</div>
+        <div class="col text-right">Profit</div>
+      </div>
+    </div>
     <ion-list>
-      <ion-item ng-repeat="fundProfit in fundProfits" href="#/tab/fundProfits/{{fundProfit.id}}">
+      <ion-item collection-repeat="fundProfit in fundProfits" href="#/tab/fundProfits/{{fundProfit.id}}" item-height="70">
         <div class="row">
-          <div class="col">
-            <h3 class="strong">{{fundProfit.name}}</h3>
-            <!-- <p>{{earning.code}}</p> -->
+          <div class="col col-50">
+            <h4 class="strong">{{fundProfit.name}}</h4>
+            <h5>{{fundProfit.code}}</h5>
+            <!-- <p></p> -->
           </div>
-          <div class="col ">
-            <p>{{fundProfit.date}}</p>
+          <div class="col col-25 text-center">
+            <h4>{{fundProfit.date | date: 'yyyy-MM-dd'}}</h4>
           </div>
-          <div class="col text-right">
-            <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[fundProfit.amount>=0]">{{fundProfit.amount}}</h3>
-          </div>
-          <div class="col text-right">
-            <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[fundProfit.amount>=0]">{{fundProfit.profitability}}%</h3>
+          <div class="col col-25 text-right">
+            <h4 ng-class="{true:'profit-positive', false:'profit-negative'}[fundProfit.amount>=0]">{{fundProfit.amount}}</h4>
+            <h5 ng-class="{true:'profit-positive', false:'profit-negative'}[fundProfit.amount>=0]">{{fundProfit.profitability}}%</h5>
           </div>
         </div>
       </ion-item>

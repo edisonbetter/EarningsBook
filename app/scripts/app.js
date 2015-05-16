@@ -77,7 +77,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     })
     .state('tab.stockProfitEdit', {
-      url: '/stockProfits/edit/:stockEarningId',
+      url: '/stockProfits/edit/:stockProfitId',
       views: {
         'tab-stockProfits': {
           templateUrl: 'templates/stock-profit-create.html',
@@ -115,7 +115,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     })
     .state('tab.fundProfitEdit', {
-      url: '/fundProfits/edit/:fundEarningId',
+      url: '/fundProfits/edit/:fundProfitId',
       views: {
         'tab-fundProfits': {
           templateUrl: 'templates/fund-profit-create.html',
@@ -137,4 +137,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
-});
+})
+
+.config(function($ionicConfigProvider) {
+  $ionicConfigProvider.backButton.previousTitleText(false).text('');
+})
+;

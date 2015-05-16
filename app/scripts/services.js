@@ -4,7 +4,7 @@ var starter = angular.module('starter.services', [])
   .factory('StockProfits', function() {
     var stockProfits = [{
       id: 1,
-      date: '2013-11-20',
+      date: '2013-11-20T16:00:00.000Z',
       code: '1219',
       name: '天喔国际',
       quantity: 5000,
@@ -19,7 +19,7 @@ var starter = angular.module('starter.services', [])
       sellConsideration: 60000
     }, {
       id: 2,
-      date: '2013-11-27',
+      date: '2013-11-27T16:00:00.000Z',
       code: '1316',
       name: '耐世特',
       quantity: 5000,
@@ -34,7 +34,7 @@ var starter = angular.module('starter.services', [])
       sellConsideration: 60000
     }, {
       id: 3,
-      date: '2013-12-02',
+      date: '2013-12-02T16:00:00.000Z',
       code: '1515',
       name: '凤凰医疗',
       quantity: 5000,
@@ -64,7 +64,7 @@ var starter = angular.module('starter.services', [])
       sellConsideration: 60000
     }, {
       id: 5,
-      date: '2013-12-05',
+      date: '2013-12-05T16:00:00.000Z',
       code: '484',
       name: '云游控股',
       quantity: 5000,
@@ -79,7 +79,7 @@ var starter = angular.module('starter.services', [])
       sellConsideration: 60000
     }, {
       id: 6,
-      date: '2013-12-11',
+      date: '2013-12-11T16:00:00.000Z',
       code: '1862',
       name: '景瑞控股',
       quantity: 5000,
@@ -94,7 +94,7 @@ var starter = angular.module('starter.services', [])
       sellConsideration: 60000
     }, {
       id: 7,
-      date: '2013-12-12',
+      date: '2013-12-12T16:00:00.000Z',
       code: '1359',
       name: '中国信达资产管理',
       quantity: 5000,
@@ -126,9 +126,9 @@ var starter = angular.module('starter.services', [])
         sellConsideration = sellConsideration - stockProfit.sellTransactionFee;
         cost = cost + stockProfit.sellTransactionFee;
       }
-      stockProfit.profit = profit;
+      stockProfit.amount = profit;
       var earningRate = profit / cost * 100;
-      stockProfit.earningRate = earningRate.toFixed(2);
+      stockProfit.profitability = earningRate.toFixed(2);
       stockProfit.buyConsideration = buyConsideration;
       stockProfit.sellConsideration = sellConsideration;
     }
@@ -144,6 +144,7 @@ var starter = angular.module('starter.services', [])
         calculateEarning(stockProfit);
         stockProfits.push(stockProfit);
         idCounter = idCounter + 1;
+        return stockProfit;
       },
       get: function(stockProfitId) {
         for (var i = 0; i < stockProfits.length; i++) {
@@ -159,7 +160,7 @@ var starter = angular.module('starter.services', [])
 starter.factory('FundProfits', function() {
   var fundProfits = [{
     id: 1,
-    date: '2013-11-20',
+    date: '2013-11-20T16:00:00.000Z',
     code: 'F1219',
     name: '嘉实混合策略',
     quantity: 5000,
@@ -174,7 +175,7 @@ starter.factory('FundProfits', function() {
     sellConsideration: 60000
   }, {
     id: 2,
-    date: '2013-11-27',
+    date: '2013-11-27T16:00:00.000Z',
     code: 'F3316',
     name: '银河主题策略',
     quantity: 5000,
@@ -189,7 +190,7 @@ starter.factory('FundProfits', function() {
     sellConsideration: 60000
   }, {
     id: 3,
-    date: '2013-12-02',
+    date: '2013-12-02T16:00:00.000Z',
     code: 'F1515',
     name: '银河定投宝',
     quantity: 5000,
@@ -204,7 +205,7 @@ starter.factory('FundProfits', function() {
     sellConsideration: 60000
   }, {
     id: 4,
-    date: '2013-12-04',
+    date: '2013-12-04T16:00:00.000Z',
     code: 'F3315',
     name: '汇添富移动互联网',
     quantity: 5000,
@@ -219,7 +220,7 @@ starter.factory('FundProfits', function() {
     sellConsideration: 60000
   }, {
     id: 5,
-    date: '2013-12-05',
+    date: '2013-12-05T16:00:00.000Z',
     code: 'F484',
     name: '景顺长城沪港精选基金',
     quantity: 5000,
@@ -293,6 +294,23 @@ starter.factory('ProfitSummary', function() {
   return {
     all: function() {
       return profitSummary;
+    },
+    update: function(profit){
+      if('HKD' === profit.currency){
+        profitSummary.hkdProfits = profitSummary.hkdProfits + profit.amount;
+        if('Stock' === profit.securityType){
+          profitSummary.hkdStockProfits = profitSummary.hkdStockProfits + profit.amount;
+        }else if('Fund' === profit.securityType){
+          profitSummary.hkdFundProfits = profitSummary.hkdFundProfits + profit.amount;
+        }
+      }else if('CNY' === profit.currency){
+        profitSummary.cnyProfits = profitSummary.cnyProfits + profit.amount;
+        if('Stock' === profit.securityType){
+          profitSummary.cnyStockProfits = profitSummary.cnyStockProfits + profit.amount;
+        }else if('Fund' === profit.securityType){
+          profitSummary.cnyFundProfits = profitSummary.cnyFundProfits + profit.amount;
+        }
+      }
     }
   };
 });

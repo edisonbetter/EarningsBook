@@ -1,4 +1,5 @@
 // Your application styles go here
+
 .profit-positive{
   color: #fa041c;
 }
@@ -24,4 +25,17 @@
 .bar-button-style-1{
   color: white;
   font-size: 3px;
+}
+
+.table-header{
+  height: 50px;
+}
+
+.secondary-font{
+  font-size: 75%;
+}
+
+.row + .row {
+  margin-top: -5px;
+  padding: 5px;
 }

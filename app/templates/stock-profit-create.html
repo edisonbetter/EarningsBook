@@ -3,23 +3,27 @@
     <div class="card">
       <form name="createForm" role="form" novalidate show-validation>
         <label class="item item-input">
-          <input type="text" placeholder="Stock Code" ng-model="stockProfit.code" required>
+          <span class="input-label">Stock Code</span>
+          <input type="text" ng-model="stockProfit.code" required>
         </label>
         <label class="item item-input">
-          <input type="text" placeholder="Stock Name" ng-model="stockProfit.name" required>
+          <span class="input-label">Stock Name</span>
+          <input type="text" ng-model="stockProfit.name" required>
         </label>
         <label class="item item-input">
-          <input type="date" placeholder="Date" ng-model="stockProfit.date" required>
+          <span class="input-label">Date</span>
+          <input type="date" ng-model="stockProfit.date" required>
         </label>
         <label class="item item-input item-select">
-          <div class="input-label">Currency</div>
-          <select ng-model="stockProfit.currency" ng-model="stockProfit.code" required>
+          <span class="input-label">Currency</span>
+          <select ng-model="stockProfit.currency" required>
             <option value="HKD" selected>HKD</option>
             <option value="CNY">CNY</option>
           </select>
         </label>
         <label class="item item-input">
-          <input name="buyPrice" type="number" placeholder="Quantity" ng-model="stockProfit.quantity" required>
+          <span class="input-label">Quantity</span>
+          <input name="quantity" type="number" ng-model="stockProfit.quantity" required>
         </label>
         <div ng-show="createForm.buyPrice.$invalid">
           <p class="help-block" ng-show="createForm.buyPrice.$error.number">
@@ -27,16 +31,20 @@
           </p>
         </div>
         <label class="item item-input">
-          <input type="number" placeholder="Buy Price" ng-model="stockProfit.buyPrice" required>
+          <span class="input-label">Buy Price</span>
+          <input type="number" ng-model="stockProfit.buyPrice" required>
         </label>
         <label class="item item-input">
-          <input type="number" placeholder="Buy Fee" ng-model="stockProfit.buyTransactionFee" required>
+          <span class="input-label">Buy Fee</span>
+          <input type="number" ng-model="stockProfit.buyTransactionFee" required>
         </label>
         <label class="item item-input">
-          <input type="number" placeholder="Sell Price" ng-model="stockProfit.sellPrice" required>
+          <span class="input-label">Sell Price</span>
+          <input type="number" ng-model="stockProfit.sellPrice" required>
         </label>
         <label class="item item-input">
-          <input type="number" placeholder="Sell Fee" ng-model="stockProfit.sellTransactionFee" required>
+          <span class="input-label">Sell Fee</span>
+          <input type="number" ng-model="stockProfit.sellTransactionFee" required>
         </label>
       </form>
     </div>
