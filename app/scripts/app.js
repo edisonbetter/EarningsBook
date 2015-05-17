@@ -81,7 +81,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       views: {
         'tab-stockProfits': {
           templateUrl: 'templates/stock-profit-create.html',
-          controller: 'StockProfitsCtrl'
+          controller: 'StockProfitEditCtrl'
         }
       }
     })

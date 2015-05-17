@@ -126,11 +126,11 @@ var starter = angular.module('starter.services', [])
         sellConsideration = sellConsideration - stockProfit.sellTransactionFee;
         cost = cost + stockProfit.sellTransactionFee;
       }
-      stockProfit.amount = profit;
+      stockProfit.amount = profit.toFixed(2);
       var earningRate = profit / cost * 100;
       stockProfit.profitability = earningRate.toFixed(2);
-      stockProfit.buyConsideration = buyConsideration;
-      stockProfit.sellConsideration = sellConsideration;
+      stockProfit.buyConsideration = buyConsideration.toFixed(2);
+      stockProfit.sellConsideration = sellConsideration.toFixed(2);
     }
     return {
       all: function() {
@@ -140,10 +140,12 @@ var starter = angular.module('starter.services', [])
         stockProfits.splice(stockProfits.indexOf(stockProfit), 1);
       },
       create: function(stockProfit) {
-        stockProfit.id = idCounter;
-        calculateEarning(stockProfit);
-        stockProfits.push(stockProfit);
-        idCounter = idCounter + 1;
+        if(null === stockProfit.id){
+          stockProfit.id = idCounter;
+          calculateEarning(stockProfit);
+          stockProfits.push(stockProfit);
+          idCounter = idCounter + 1;
+        }
         return stockProfit;
       },
       get: function(stockProfitId) {
@@ -252,11 +254,11 @@ starter.factory('FundProfits', function() {
       sellConsideration = sellConsideration - fundProfit.sellTransactionFee;
       cost = cost + fundProfit.sellTransactionFee;
     }
-    fundProfit.profit = profit;
+    fundProfit.profit = profit.toFixed(2);
     var earningRate = profit / cost * 100;
-    fundProfit.earningRate = earningRate.toFixed(2);
-    fundProfit.buyConsideration = buyConsideration;
-    fundProfit.sellConsideration = sellConsideration;
+    fundProfit.profitability = earningRate.toFixed(2);
+    fundProfit.buyConsideration = buyConsideration.toFixed(2);
+    fundProfit.sellConsideration = sellConsideration.toFixed(2);
   }
   return {
     all: function() {
@@ -287,9 +289,33 @@ starter.factory('ProfitSummary', function() {
     hkdProfits: 20030,
     hkdStockProfits: 14030,
     hkdFundProfits: 6000,
+    hkdBestStockProfitID:1,
+    hkdBestStockProfitCode: '1219',
+    hkdBestStockProfitName:'天喔国际',
+    hkdBestStockProfitAmount: 1128.86,
+    hkdBestStockProfitProfitability: 21.87,
+    hkdBestStockProfitDate: '2015-05-20',
+    hkdBestFundProfitID:1,
+    hkdBestFundProfitCode: '00330',
+    hkdBestFundProfitName:'嘉实混合策略',
+    hkdBestFundProfitAmount: 21128.86,
+    hkdBestFundProfitProfitability: 41.55,
+    hkdBestFundDate: '2015-05-21',
     cnyProfits: 30202,
     cnyStockProfits: 3502,
-    cnyFundProfits: 26700
+    cnyFundProfits: 26700,
+    cnyBestStockProfitID:1,
+    cnyBestStockProfitCode: '1219',
+    cnyBestStockProfitName:'天喔国际',
+    cnyBestStockProfitAmount: 1128.86,
+    cnyBestStockProfitProfitability: 21.87,
+    cnyBestStockProfitDate: '2015-05-20',
+    cnyBestFundProfitID:1,
+    cnyBestFundProfitCode: '00330',
+    cnyBestFundProfitName:'嘉实混合策略',
+    cnyBestFundProfitAmount: 21128.86,
+    cnyBestFundProfitProfitability: 41.55,
+    cnyBestFundProfitDate: '2015-05-21',
   };
   return {
     all: function() {
@@ -300,15 +326,47 @@ starter.factory('ProfitSummary', function() {
         profitSummary.hkdProfits = profitSummary.hkdProfits + profit.amount;
         if('Stock' === profit.securityType){
           profitSummary.hkdStockProfits = profitSummary.hkdStockProfits + profit.amount;
+          if(profit.profitability > profitSummary.hkdBestStockProfitProfitability){
+            profitSummary.hkdBestStockProfitID = profit.id;
+            profitSummary.hkdBestStockProfitCode = profit.code;
+            profitSummary.hkdBestStockProfitName = profit.name;
+            profitSummary.hkdBestStockProfitDate = profit.date;
+            profitSummary.hkdBestStockProfitAmount = profit.amount;
+            profitSummary.hkdBestStockProfitProfitability = profit.profitability;
+          }
         }else if('Fund' === profit.securityType){
           profitSummary.hkdFundProfits = profitSummary.hkdFundProfits + profit.amount;
+          if(profit.profitability > profitSummary.hkdBestFundProfitProfitability){
+            profitSummary.hkdBestFundProfitID = profit.id;
+            profitSummary.hkdBestFundProfitCode = profit.code;
+            profitSummary.hkdBestFundProfitName = profit.name;
+            profitSummary.hkdBestFundProfitDate = profit.date;
+            profitSummary.hkdBestFundProfitAmount = profit.amount;
+            profitSummary.hkdBestFundProfitProfitability = profit.profitability;
+          }
         }
       }else if('CNY' === profit.currency){
         profitSummary.cnyProfits = profitSummary.cnyProfits + profit.amount;
         if('Stock' === profit.securityType){
           profitSummary.cnyStockProfits = profitSummary.cnyStockProfits + profit.amount;
+          if(profit.profitability > profitSummary.cnyBestStockProfitProfitability){
+            profitSummary.cnyBestStockProfitID = profit.id;
+            profitSummary.cnyBestStockProfitCode = profit.code;
+            profitSummary.cnyBestStockProfitName = profit.name;
+            profitSummary.cnyBestStockProfitDate = profit.date;
+            profitSummary.cnyBestStockProfitAmount = profit.amount;
+            profitSummary.cnyBestStockProfitProfitability = profit.profitability;
+          }
         }else if('Fund' === profit.securityType){
           profitSummary.cnyFundProfits = profitSummary.cnyFundProfits + profit.amount;
+          if(profit.profitability > profitSummary.cnyBestFundProfitProfitability){
+            profitSummary.cnyBestFundProfitID = profit.id;
+            profitSummary.cnyBestFundProfitCode = profit.code;
+            profitSummary.cnyBestFundProfitName = profit.name;
+            profitSummary.cnyBestFundProfitDate = profit.date;
+            profitSummary.cnyBestFundProfitAmount = profit.amount;
+            profitSummary.cnyBestFundProfitProfitability = profit.profitability;
+          }
         }
       }
     }

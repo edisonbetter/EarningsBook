@@ -5,16 +5,57 @@
         <div class="list card">
           <div class="item item-divider">
             <span>CNY Total Profits</span>
-            <span class="toRight" ng-class="{true:'profit-positive', false:'profit-negative'}[profitSummary.cnyProfits>=0]">{{profitSummary.cnyProfits}}</span>
+            <span class="toRight" ng-class="{true:'profit-positive', false:'profit-negative'}[profitSummary.cnyProfits>=0]">${{profitSummary.cnyProfits}}</span>
           </div>
           <div class="item item-body">
             <div ac-chart="'pie'" ac-data="cnyData" ac-config="config" id="cnyChart" class="chart"></div>
-            <div>
-              <div>Stock Profit
-                <span ng-class="{true:'profit-positive', false:'profit-negative'}[profitSummary.cnyStockProfits>=0]">{{profitSummary.cnyStockProfits}}</span>
+            <div class="dash-pie-chart">
+              <div>
+                <span class="ion-ios-pulse-strong dash-stock-color"></span> Stock Profits
+                <span ng-class="{true:'profit-positive', false:'profit-negative'}[profitSummary.cnyStockProfits>=0]">${{profitSummary.cnyStockProfits}}</span>
               </div>
-              <div>Fund Profit
-                <span ng-class="{true:'profit-positive', false:'profit-negative'}[profitSummary.cnyFundProfits>=0]">{{profitSummary.cnyFundProfits}}</span>
+              <div>
+                <span class="ion-stats-bars dash-fund-color"></span> Fund Profits
+                <span ng-class="{true:'profit-positive', false:'profit-negative'}[profitSummary.cnyFundProfits>=0]">${{profitSummary.cnyFundProfits}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="list card">
+            <div class="item item-divider">
+              Most profitable investment
+            </div>
+            <div class="row item">
+              <div class="col col-center text-center">
+                <span class="ion-ios-pulse-strong dash-stock-color"></span> Stock
+              </div>
+              <div class="col col-center text-center ">
+                <h4>{{profitSummary.cnyBestStockProfitDate | date: 'yyyy-MM-dd'}}</h4>
+              </div>
+              <div class="col text-center">
+                <h4>{{profitSummary.cnyBestStockProfitName}}</h4>
+                <span class="secondary-font">{{profitSummary.cnyBestStockProfitCode}}</span>
+              </div>
+              <div class="col text-center dash-profit-col">
+                <h3 class="dash-profit-col">${{profitSummary.cnyBestStockProfitAmount}}</h3>
+                <span class="secondary-font">{{profitSummary.cnyBestStockProfitProfitability}}%</span>
+              </div>
+            </div>
+            <div class="row item">
+              <div class="col col-center text-center">
+                <span class="ion-stats-bars dash-fund-color"></span> Fund
+              </div>
+              <div class="col col-center text-center ">
+                <h4>{{profitSummary.cnyBestFundProfitDate | date: 'yyyy-MM-dd'}}</h4>
+              </div>
+              <div class="col text-center">
+                <h4>{{profitSummary.cnyBestFundProfitName}}</h4>
+                <span class="secondary-font">{{profitSummary.cnyBestFundProfitCode}}</span>
+              </div>
+              <div class="col text-center dash-profit-col">
+                <h3 class="dash-profit-col">${{profitSummary.cnyBestFundProfitAmount}}</h3>
+                <span class="secondary-font">{{profitSummary.cnyBestFundProfitProfitability}}%</span>
               </div>
             </div>
           </div>
@@ -24,16 +65,16 @@
         <div class="list card">
           <div class="item item-divider">
             <span>HKD Total Profits</span>
-            <span class="toRight" ng-class="{true:'profit-positive', false:'profit-negative'}[profitSummary.hkdProfits>=0]">{{profitSummary.hkdProfits}}</span>
+            <span class="toRight" ng-class="{true:'profit-positive', false:'profit-negative'}[profitSummary.hkdProfits>=0]">${{profitSummary.hkdProfits}}</span>
           </div>
           <div class="item item-body">
             <div ac-chart="'pie'" ac-data="hkdData" ac-config="config" id="chart" class="chart"></div>
             <div>
               <div>Stock Profit
-                <span ng-class="{true:'profit-positive', false:'profit-negative'}[profitSummary.hkdStockProfits>=0]">{{profitSummary.hkdStockProfits}}</span>
+                <span ng-class="{true:'profit-positive', false:'profit-negative'}[profitSummary.hkdStockProfits>=0]">${{profitSummary.hkdStockProfits}}</span>
               </div>
               <div>Fund Profit
-                <span ng-class="{true:'profit-positive', false:'profit-negative'}[profitSummary.hkdFundProfits>=0]">{{profitSummary.hkdFundProfits}}</span>
+                <span ng-class="{true:'profit-positive', false:'profit-negative'}[profitSummary.hkdFundProfits>=0]">${{profitSummary.hkdFundProfits}}</span>
               </div>
             </div>
           </div>

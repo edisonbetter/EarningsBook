@@ -5,7 +5,7 @@
   </ion-nav-buttons>
   <ion-content>
     <div class="item item-divider table-header">
-      <div class="row">
+      <div class="row ">
         <div class="col">Stock</div>
         <div class="col text-center">Date</div>
         <div class="col text-center">Profit</div>
@@ -14,14 +14,14 @@
     <div class="list">
       <a class="row item" collection-repeat="stockProfit in stockProfits" href="#/tab/stockProfits/{{stockProfit.id}}">
           <div class="col">
-            <h3>{{stockProfit.name}}</h3> 
+            <h4>{{stockProfit.name}}</h4>
             <span class="secondary-font">{{stockProfit.code}}</span>
           </div>
-          <div class="col text-center">
-            <h3>{{stockProfit.date | date: 'yyyy-MM-dd'}}</h3>
+          <div class="col col-center text-center">
+            <h4>{{stockProfit.date | date: 'yyyy-MM-dd'}}</h4>
           </div>
           <div class="col text-center">
-            <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[stockProfit.amount>=0]">{{stockProfit.amount}}</h3>
+            <h3 ng-class="{true:'profit-positive', false:'profit-negative'}[stockProfit.amount>=0]">${{stockProfit.amount}}</h3>
             <span class="secondary-font" ng-class="{true:'profit-positive', false:'profit-negative'}[stockProfit.amount>=0]">{{stockProfit.profitability}}%</span>
           </div>
       </a>

@@ -5,7 +5,7 @@
 }
 
 .profit-negative{
-  color: #55be00;
+  color: #10c33d;
 }
 
 .toRight{
@@ -37,5 +37,22 @@
 
 .row + .row {
   margin-top: -5px;
+  padding: 5px;
+}
+
+.dash-stock-color{
+  color: rgb(52, 245, 110);
+}
+
+.dash-fund-color{
+  color: rgb(43, 154, 246);
+}
+
+.dash-profit-col{
+  background-color: #ff8400;
+  color: white;
+}
+
+.dash-pie-chart{
   padding: 5px;
 }
