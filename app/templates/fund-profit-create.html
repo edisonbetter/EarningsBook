@@ -3,41 +3,47 @@
     <div class="card">
       <form name="createForm" role="form" novalidate show-validation>
         <label class="item item-input">
-          <input type="text" placeholder="Fund Code" ng-model="fundProfit.code" required>
+          <span class="input-label">Fund Code</span>
+          <input type="text" ng-model="fundProfit.code" required>
         </label>
         <label class="item item-input">
-          <input type="text" placeholder="Fund Name" ng-model="fundProfit.name" required>
+          <span class="input-label">Fund Name</span>
+          <input type="text" ng-model="fundProfit.name" required>
         </label>
         <label class="item item-input">
-          <input type="date" placeholder="Date" ng-model="fundProfit.date" required>
+          <span class="input-label">Date</span>
+          <input type="date" ng-model="fundProfit.date" required>
         </label>
         <label class="item item-input item-select">
-          <div class="input-label">Currency</div>
+          <span class="input-label">Currency</span>
           <select ng-model="fundProfit.currency" required>
             <option value="HKD" selected>HKD</option>
             <option value="CNY">CNY</option>
           </select>
         </label>
         <label class="item item-input">
-          <input name="buyPrice" type="number" placeholder="Quantity" ng-model="fundProfit.quantity" required>
-        </label>
-        <div ng-show="createForm.buyPrice.$invalid">
-          <p class="help-block" ng-show="createForm.buyPrice.$error.number">
-            This field should be a number.
-          </p>
-        </div>
-        <label class="item item-input">
-          <input type="number" placeholder="Buy Price" ng-model="fundProfit.buyPrice" required>
+          <span class="input-label">Buy Consideration</span>
+          <input type="number" ng-model="fundProfit.buyConsideration" required>
         </label>
         <label class="item item-input">
-          <input type="number" placeholder="Buy Fee" ng-model="fundProfit.buyTransactionFee" required>
+          <span class="input-label">Buy Fee</span>
+          <input type="number" ng-model="fundProfit.buyTransactionFee" required>
         </label>
         <label class="item item-input">
-          <input type="number" placeholder="Sell Price" ng-model="fundProfit.sellPrice" required>
+          <span class="input-label">Sell Consideration</span>
+          <input type="number" ng-model="fundProfit.sellConsideration" required>
         </label>
         <label class="item item-input">
-          <input type="number" placeholder="Sell Fee" ng-model="fundProfit.sellTransactionFee" required>
+          <span class="input-label">Sell Fee</span>
+          <input type="number" ng-model="fundProfit.sellTransactionFee" required>
         </label>
+        <ion-toggle  ng-model="fundProfit.calculateProfit">
+            Calculate Profit
+        </ion-toggle>
+        <!-- <lable class="item item-toggle">
+          <span class="input-lable">Included in Book</span>
+          <input type="checkbox">
+        </lable> -->
       </form>
     </div>
     <div class="padding">

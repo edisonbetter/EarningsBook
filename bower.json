@@ -4,7 +4,8 @@
   "dependencies": {
     "ionic": "v1.0.0-rc.3",
     "ngCordova": "v0.1.14-alpha",
-    "angular-charts": "~0.2.7"
+    "angular-charts": "~0.2.7",
+    "pouchdb": "~3.5.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.3.6",
