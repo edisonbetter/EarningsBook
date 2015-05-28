@@ -140,7 +140,7 @@ var starter = angular.module('starter.services', [])
         stockProfits.splice(stockProfits.indexOf(stockProfit), 1);
       },
       create: function(stockProfit) {
-        if(null === stockProfit.id){
+        if (!stockProfit.hasOwnProperty('id')) {
           stockProfit.id = idCounter;
           calculateEarning(stockProfit);
           stockProfits.push(stockProfit);
@@ -161,154 +161,147 @@ var starter = angular.module('starter.services', [])
 
 starter.factory('FundProfits', function() {
   var fundProfits = [{
-    id: 1,
-    date: '2015-03-25T16:00:00.000Z',
-    code: 'F3316',
-    name: '银河主题策略',
-    quantity: 5000,
-    amount: 17707,
-    currency: 'CNY',
-    profitability: 29.51,
-    buyPrice: 30,
-    sellPrice: 21,
-    buyTransactionFee: 40,
-    sellTransactionFee: 50.2,
-    buyConsideration: 50000,
-    sellConsideration: 60000
-  },
-  // {
-  //   id: 2,
-  //   date: '2015-05-14T16:00:00.000Z',
-  //   code: 'F3316',
-  //   name: '银河主题策略',
-  //   quantity: 5000,
-  //   amount: 1674.14,
-  //   currency: 'CNY',
-  //   profitability: 13.39,
-  //   buyPrice: 30,
-  //   sellPrice: 21,
-  //   buyTransactionFee: 40,
-  //   sellTransactionFee: 50.2,
-  //   buyConsideration: 50000,
-  //   sellConsideration: 60000
-  // },
-  {
-    id: 3,
-    date: '2015-05-22T16:00:00.000Z',
-    code: 'F1515',
-    name: '银河定投宝',
-    quantity: 5000,
-    amount: 2116.9,
-    currency: 'CNY',
-    profitability: 21.17,
-    buyPrice: 40,
-    sellPrice: 31,
-    buyTransactionFee: 40,
-    sellTransactionFee: 50.2,
-    buyConsideration: 50000,
-    sellConsideration: 60000
-  }, {
-    id: 4,
-    date: '2013-12-04T16:00:00.000Z',
-    code: 'F3315',
-    name: '汇添富移动互联网',
-    quantity: 5117.61,
-    amount: 4764,
-    currency: 'CNY',
-    profitability: 37.67,
-    buyPrice: 2.469,
-    sellPrice: 3.399,
-    buyTransactionFee: 0,
-    sellTransactionFee: 0,
-    buyConsideration: 50000,
-    sellConsideration: 60000
-  },{
-    id: 5,
-    date: '2015-05-22T16:00:00.000Z',
-    code: 'F484',
-    name: '银河服务混合',
-    quantity: 5000,
-    amount: 1881.46,
-    currency: 'CNY',
-    profitability: 10.7,
-    buyPrice: 60,
-    sellPrice: 51,
-    buyTransactionFee: 40,
-    sellTransactionFee: 50.2,
-    buyConsideration: 50000,
-    sellConsideration: 60000
-  },
-  {
-    id: 6,
-    date: '2015-05-22T16:00:00.000Z',
-    code: 'F484',
-    name: '嘉实新消费',
-    quantity: 5000,
-    amount: 5079,
-    currency: 'CNY',
-    profitability: 25.39,
-    buyPrice: 60,
-    sellPrice: 51,
-    buyTransactionFee: 40,
-    sellTransactionFee: 50.2,
-    buyConsideration: 50000,
-    sellConsideration: 60000
-  },
-  {
-    id: 7,
-    date: '2015-05-22T16:00:00.000Z',
-    code: 'F484',
-    name: '嘉实研究精选',
-    quantity: 5000,
-    amount: 2989,
-    currency: 'CNY',
-    profitability: 26.12,
-    buyPrice: 60,
-    sellPrice: 51,
-    buyTransactionFee: 40,
-    sellTransactionFee: 50.2,
-    buyConsideration: 50000,
-    sellConsideration: 60000
-  },
-  {
-    id: 8,
-    date: '2015-05-22T16:00:00.000Z',
-    code: 'F484',
-    name: '嘉实增长混合',
-    quantity: 5000,
-    amount: 5690,
-    currency: 'CNY',
-    profitability: 39.25,
-    buyPrice: 60,
-    sellPrice: 51,
-    buyTransactionFee: 40,
-    sellTransactionFee: 50.2,
-    buyConsideration: 50000,
-    sellConsideration: 60000
-  }];
+      id: 1,
+      date: '2015-03-25T16:00:00.000Z',
+      code: 'F3316',
+      name: '银河主题策略',
+      quantity: 5000,
+      amount: 17707,
+      currency: 'CNY',
+      profitability: 29.51,
+      buyPrice: 30,
+      sellPrice: 21,
+      buyTransactionFee: 40,
+      sellTransactionFee: 50.2,
+      buyConsideration: 50000,
+      sellConsideration: 60000
+    },
+    // {
+    //   id: 2,
+    //   date: '2015-05-14T16:00:00.000Z',
+    //   code: 'F3316',
+    //   name: '银河主题策略',
+    //   quantity: 5000,
+    //   amount: 1674.14,
+    //   currency: 'CNY',
+    //   profitability: 13.39,
+    //   buyPrice: 30,
+    //   sellPrice: 21,
+    //   buyTransactionFee: 40,
+    //   sellTransactionFee: 50.2,
+    //   buyConsideration: 50000,
+    //   sellConsideration: 60000
+    // },
+    {
+      id: 3,
+      date: '2015-05-22T16:00:00.000Z',
+      code: 'F1515',
+      name: '银河定投宝',
+      quantity: 5000,
+      amount: 2116.9,
+      currency: 'CNY',
+      profitability: 21.17,
+      buyPrice: 40,
+      sellPrice: 31,
+      buyTransactionFee: 40,
+      sellTransactionFee: 50.2,
+      buyConsideration: 50000,
+      sellConsideration: 60000
+    }, {
+      id: 4,
+      date: '2013-12-04T16:00:00.000Z',
+      code: 'F3315',
+      name: '汇添富移动互联网',
+      quantity: 5117.61,
+      amount: 4764,
+      currency: 'CNY',
+      profitability: 37.67,
+      buyPrice: 2.469,
+      sellPrice: 3.399,
+      buyTransactionFee: 0,
+      sellTransactionFee: 0,
+      buyConsideration: 50000,
+      sellConsideration: 60000
+    }, {
+      id: 5,
+      date: '2015-05-22T16:00:00.000Z',
+      code: 'F484',
+      name: '银河服务混合',
+      quantity: 5000,
+      amount: 1881.46,
+      currency: 'CNY',
+      profitability: 10.7,
+      buyPrice: 60,
+      sellPrice: 51,
+      buyTransactionFee: 40,
+      sellTransactionFee: 50.2,
+      buyConsideration: 50000,
+      sellConsideration: 60000
+    }, {
+      id: 6,
+      date: '2015-05-22T16:00:00.000Z',
+      code: 'F484',
+      name: '嘉实新消费',
+      quantity: 5000,
+      amount: 5079,
+      currency: 'CNY',
+      profitability: 25.39,
+      buyPrice: 60,
+      sellPrice: 51,
+      buyTransactionFee: 40,
+      sellTransactionFee: 50.2,
+      buyConsideration: 50000,
+      sellConsideration: 60000
+    }, {
+      id: 7,
+      date: '2015-05-22T16:00:00.000Z',
+      code: 'F484',
+      name: '嘉实研究精选',
+      quantity: 5000,
+      amount: 2989,
+      currency: 'CNY',
+      profitability: 26.12,
+      buyPrice: 60,
+      sellPrice: 51,
+      buyTransactionFee: 40,
+      sellTransactionFee: 50.2,
+      buyConsideration: 50000,
+      sellConsideration: 60000
+    }, {
+      id: 8,
+      date: '2015-05-22T16:00:00.000Z',
+      code: 'F484',
+      name: '嘉实增长混合',
+      quantity: 5000,
+      amount: 5690,
+      currency: 'CNY',
+      profitability: 39.25,
+      buyPrice: 60,
+      sellPrice: 51,
+      buyTransactionFee: 40,
+      sellTransactionFee: 50.2,
+      buyConsideration: 50000,
+      sellConsideration: 60000
+    }
+  ];
 
   var idCounter = 6;
 
   function calculateEarning(fundProfit) {
-    var profit = (fundProfit.sellPrice - fundProfit.buyPrice) * fundProfit.quantity;
-    var buyConsideration = fundProfit.buyPrice * fundProfit.quantity;
-    var sellConsideration = fundProfit.sellPrice * fundProfit.quantity;
-    var cost = buyConsideration;
+    var profit = fundProfit.sellConsideration - fundProfit.buyConsideration;
+    var cost = fundProfit.buyConsideration;
     if (null !== fundProfit.buyTransactionFee) {
       profit = profit - fundProfit.buyTransactionFee;
-      buyConsideration = buyConsideration + fundProfit.buyTransactionFee;
-      cost = buyConsideration;
+      cost = cost + fundProfit.buyTransactionFee;
     }
     if (null !== fundProfit.sellTransactionFee) {
       profit = profit - fundProfit.sellTransactionFee;
-      sellConsideration = sellConsideration - fundProfit.sellTransactionFee;
       cost = cost + fundProfit.sellTransactionFee;
     }
+
     fundProfit.profit = profit.toFixed(2);
-    var earningRate = profit / cost * 100;
-    fundProfit.profitability = earningRate.toFixed(2);
-    fundProfit.buyConsideration = buyConsideration.toFixed(2);
-    fundProfit.sellConsideration = sellConsideration.toFixed(2);
+    var profitability = profit / cost * 100;
+    fundProfit.profitability = profitability.toFixed(2);
   }
   return {
     all: function() {
@@ -318,10 +311,12 @@ starter.factory('FundProfits', function() {
       fundProfits.splice(fundProfits.indexOf(fundProfit), 1);
     },
     create: function(fundProfit) {
-      fundProfit.id = idCounter;
-      calculateEarning(fundProfit);
-      fundProfits.push(fundProfit);
-      idCounter = idCounter + 1;
+      if (!fundProfit.hasOwnProperty('id')) {
+        fundProfit.id = idCounter;
+        calculateEarning(fundProfit);
+        fundProfits.push(fundProfit);
+        idCounter = idCounter + 1;
+      }
     },
     get: function(fundProfitId) {
       for (var i = 0; i < fundProfits.length; i++) {
@@ -339,93 +334,120 @@ starter.factory('ProfitSummary', function() {
     hkdProfits: 20030,
     hkdStockProfits: 14030,
     hkdFundProfits: 6000,
-    hkdBestStockProfitID:1,
+    hkdBestStockProfitID: 1,
     hkdBestStockProfitCode: '1219',
-    hkdBestStockProfitName:'天喔国际',
+    hkdBestStockProfitName: '天喔国际',
     hkdBestStockProfitAmount: 1128.86,
     hkdBestStockProfitProfitability: 21.87,
     hkdBestStockProfitDate: '2015-05-20',
-    hkdBestFundProfitID:1,
+    hkdBestFundProfitID: 1,
     hkdBestFundProfitCode: '00330',
-    hkdBestFundProfitName:'嘉实混合策略',
+    hkdBestFundProfitName: '嘉实混合策略',
     hkdBestFundProfitAmount: 21128.86,
     hkdBestFundProfitProfitability: 41.55,
     hkdBestFundDate: '2015-05-21',
     cnyProfits: 30202,
     cnyStockProfits: 3502,
     cnyFundProfits: 26700,
-    cnyBestStockProfitID:1,
+    cnyBestStockProfitID: 1,
     cnyBestStockProfitCode: '1219',
-    cnyBestStockProfitName:'天喔国际',
+    cnyBestStockProfitName: '天喔国际',
     cnyBestStockProfitAmount: 1128.86,
     cnyBestStockProfitProfitability: 21.87,
     cnyBestStockProfitDate: '2015-05-20',
-    cnyBestFundProfitID:1,
+    cnyBestFundProfitID: 1,
     cnyBestFundProfitCode: '00330',
-    cnyBestFundProfitName:'嘉实混合策略',
+    cnyBestFundProfitName: '嘉实混合策略',
     cnyBestFundProfitAmount: 21128.86,
     cnyBestFundProfitProfitability: 41.55,
     cnyBestFundProfitDate: '2015-05-21',
   };
+
+  function addProfit(profitSummary, profit) {
+    if ('HKD' === profit.currency) {
+      profitSummary.hkdProfits = profitSummary.hkdProfits + profit.amount;
+      if ('Stock' === profit.securityType) {
+        profitSummary.hkdStockProfits = profitSummary.hkdStockProfits + profit.amount;
+        if (profit.profitability > profitSummary.hkdBestStockProfitProfitability) {
+          profitSummary.hkdBestStockProfitID = profit.id;
+          profitSummary.hkdBestStockProfitCode = profit.code;
+          profitSummary.hkdBestStockProfitName = profit.name;
+          profitSummary.hkdBestStockProfitDate = profit.date;
+          profitSummary.hkdBestStockProfitAmount = profit.amount;
+          profitSummary.hkdBestStockProfitProfitability = profit.profitability;
+        }
+      } else if ('Fund' === profit.securityType) {
+        profitSummary.hkdFundProfits = profitSummary.hkdFundProfits + profit.amount;
+        if (profit.profitability > profitSummary.hkdBestFundProfitProfitability) {
+          profitSummary.hkdBestFundProfitID = profit.id;
+          profitSummary.hkdBestFundProfitCode = profit.code;
+          profitSummary.hkdBestFundProfitName = profit.name;
+          profitSummary.hkdBestFundProfitDate = profit.date;
+          profitSummary.hkdBestFundProfitAmount = profit.amount;
+          profitSummary.hkdBestFundProfitProfitability = profit.profitability;
+        }
+      }
+    } else if ('CNY' === profit.currency) {
+      profitSummary.cnyProfits = profitSummary.cnyProfits + profit.amount;
+      if ('Stock' === profit.securityType) {
+        profitSummary.cnyStockProfits = profitSummary.cnyStockProfits + profit.amount;
+        if (profit.profitability > profitSummary.cnyBestStockProfitProfitability) {
+          profitSummary.cnyBestStockProfitID = profit.id;
+          profitSummary.cnyBestStockProfitCode = profit.code;
+          profitSummary.cnyBestStockProfitName = profit.name;
+          profitSummary.cnyBestStockProfitDate = profit.date;
+          profitSummary.cnyBestStockProfitAmount = profit.amount;
+          profitSummary.cnyBestStockProfitProfitability = profit.profitability;
+        }
+      } else if ('Fund' === profit.securityType) {
+        profitSummary.cnyFundProfits = profitSummary.cnyFundProfits + profit.amount;
+        if (profit.profitability > profitSummary.cnyBestFundProfitProfitability) {
+          profitSummary.cnyBestFundProfitID = profit.id;
+          profitSummary.cnyBestFundProfitCode = profit.code;
+          profitSummary.cnyBestFundProfitName = profit.name;
+          profitSummary.cnyBestFundProfitDate = profit.date;
+          profitSummary.cnyBestFundProfitAmount = profit.amount;
+          profitSummary.cnyBestFundProfitProfitability = profit.profitability;
+        }
+      }
+    }
+  }
+
+  function rollbackProfit(profitSummary, oldProfit) {
+    if ('HKD' === oldProfit.currency) {
+      profitSummary.hkdProfits = profitSummary.hkdProfits - oldProfit.amount;
+      if ('Stock' === oldProfit.securityType) {
+        profitSummary.hkdStockProfits = profitSummary.hkdStockProfits - oldProfit.amount;
+      } else if ('Fund' === oldProfit.securityType) {
+        profitSummary.hkdFundProfits = profitSummary.hkdFundProfits - oldProfit.amount;
+      }
+    } else if ('CNY' === oldProfit.currency) {
+      profitSummary.cnyProfits = profitSummary.cnyProfits - oldProfit.amount;
+      if ('Stock' === oldProfit.securityType) {
+        profitSummary.cnyStockProfits = profitSummary.cnyStockProfits - oldProfit.amount;
+      } else if ('Fund' === oldProfit.securityType) {
+        profitSummary.cnyFundProfits = profitSummary.cnyFundProfits - oldProfit.amount;
+      }
+    }
+  }
+
   return {
     all: function() {
       return profitSummary;
     },
-    update: function(profit){
-      if('HKD' === profit.currency){
-        profitSummary.hkdProfits = profitSummary.hkdProfits + profit.amount;
-        if('Stock' === profit.securityType){
-          profitSummary.hkdStockProfits = profitSummary.hkdStockProfits + profit.amount;
-          if(profit.profitability > profitSummary.hkdBestStockProfitProfitability){
-            profitSummary.hkdBestStockProfitID = profit.id;
-            profitSummary.hkdBestStockProfitCode = profit.code;
-            profitSummary.hkdBestStockProfitName = profit.name;
-            profitSummary.hkdBestStockProfitDate = profit.date;
-            profitSummary.hkdBestStockProfitAmount = profit.amount;
-            profitSummary.hkdBestStockProfitProfitability = profit.profitability;
-          }
-        }else if('Fund' === profit.securityType){
-          profitSummary.hkdFundProfits = profitSummary.hkdFundProfits + profit.amount;
-          if(profit.profitability > profitSummary.hkdBestFundProfitProfitability){
-            profitSummary.hkdBestFundProfitID = profit.id;
-            profitSummary.hkdBestFundProfitCode = profit.code;
-            profitSummary.hkdBestFundProfitName = profit.name;
-            profitSummary.hkdBestFundProfitDate = profit.date;
-            profitSummary.hkdBestFundProfitAmount = profit.amount;
-            profitSummary.hkdBestFundProfitProfitability = profit.profitability;
-          }
-        }
-      }else if('CNY' === profit.currency){
-        profitSummary.cnyProfits = profitSummary.cnyProfits + profit.amount;
-        if('Stock' === profit.securityType){
-          profitSummary.cnyStockProfits = profitSummary.cnyStockProfits + profit.amount;
-          if(profit.profitability > profitSummary.cnyBestStockProfitProfitability){
-            profitSummary.cnyBestStockProfitID = profit.id;
-            profitSummary.cnyBestStockProfitCode = profit.code;
-            profitSummary.cnyBestStockProfitName = profit.name;
-            profitSummary.cnyBestStockProfitDate = profit.date;
-            profitSummary.cnyBestStockProfitAmount = profit.amount;
-            profitSummary.cnyBestStockProfitProfitability = profit.profitability;
-          }
-        }else if('Fund' === profit.securityType){
-          profitSummary.cnyFundProfits = profitSummary.cnyFundProfits + profit.amount;
-          if(profit.profitability > profitSummary.cnyBestFundProfitProfitability){
-            profitSummary.cnyBestFundProfitID = profit.id;
-            profitSummary.cnyBestFundProfitCode = profit.code;
-            profitSummary.cnyBestFundProfitName = profit.name;
-            profitSummary.cnyBestFundProfitDate = profit.date;
-            profitSummary.cnyBestFundProfitAmount = profit.amount;
-            profitSummary.cnyBestFundProfitProfitability = profit.profitability;
-          }
-        }
-      }
+    update: function(oldProfit, newProfit) {
+      rollbackProfit(profitSummary, oldProfit);
+      addProfit(profitSummary, newProfit);
+    },
+    save: function(profit) {
+      addProfit(profitSummary, profit);
     }
   };
 });
 
-starter.factory('PouchDBListener', ['', function(){
-  var localDB = new PouchDB('EarningsBook');
-}]);
+// starter.factory('PouchDBListener', ['', function(){
+//   var localDB = new PouchDB('EarningsBook');
+// }]);
 
 starter.factory('Chats', function() {
   // Might use a resource here that returns a JSON array

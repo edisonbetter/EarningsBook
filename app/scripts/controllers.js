@@ -55,9 +55,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('StockProfitsCtrl', function($scope, $ionicHistory, $state, $stateParams, StockProfits, ProfitSummary) {
-  $ionicHistory.clearHistory();
-  $scope.stockProfits = [];
-  $scope.stockProfit = StockProfits.get($stateParams.stockProfitId);
+  // $ionicHistory.clearHistory();
+  $scope.clear = function() {
+    $scope.stockProfits = [];
+    $scope.stockProfit = null;
+  };
+  $scope.clear();
+  // $scope.stockProfit = StockProfits.get($stateParams.stockProfitId);
 
   $scope.all = function() {
     $scope.stockProfits = StockProfits.all();
@@ -75,11 +79,9 @@ angular.module('starter.controllers', [])
     $state.go('tab.stockProfitDetail', {
       'stockProfitId': stockProfit.id
     });
-    $scope.clear();
+    //
   };
-  $scope.clear = function() {
-    $scope.stockProfit = null;
-  };
+
 })
 .controller('StockProfitDetailCtrl', function($scope, $state, $stateParams, $ionicPopup, StockProfits) {
   $scope.stockProfit = StockProfits.get($stateParams.stockProfitId);
